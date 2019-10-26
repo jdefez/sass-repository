@@ -1,0 +1,8 @@
+@mixin typography() {
+  .t {
+    @each $key, $value in $font-sizes {
+      &-#{$key} { font-size: $value; }
+    }
+    @content
+  }
+}

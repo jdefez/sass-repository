@@ -1,0 +1,26 @@
+@function breakpoint-value($point) {
+  @return map-get($breakpoints, $point);
+}
+
+@mixin breakpoint($type) {
+  @if $type == sm or $type == xs {
+    @media screen and (max-width: breakpoint-value(sm)) {
+      @content
+    }
+  }
+  @else if $type == md {
+    @media screen and (min-width: breakpoint-value(sm) + 1) and (max-width: breakpoint-value(md)) {
+      @content
+    }
+  }
+  @else if $type == lg {
+    @media screen and (min-width: breakpoint-value(md) + 1) and (max-width: breakpoint-value(lg)) {
+      @content
+    }
+  }
+  @else if $type == xl {
+    @media screen and (min-width: breakpoint-value(lg) + 1) {
+      @content
+    }
+  }
+}

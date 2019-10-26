@@ -1,0 +1,6 @@
+@mixin root()
+{
+  :root {
+    @content
+  }
+}

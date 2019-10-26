@@ -1,0 +1,45 @@
+@mixin media-query-highlighter($parent-position: Null, $z-index: Null) {
+  & {
+    @if $parent-position != Null {
+      position: $parent-position;
+    }
+    z-index: if($z-index != Null, $z-index, 1);
+
+    &:before {
+      display: block;
+      position: absolute;
+      content: "default";
+      top: 0;
+      left: calc(#{p(whitespace)});
+      width: auto;
+      padding: calc(#{p(whitespace)} / 2);
+      background-color: yellow;
+      font-size: 10px;
+      z-index: 100;
+
+      $points : map-sort-by-values($breakpoints);
+      $last-index : length(map-values($points));
+      $index : 1;
+      @each $point, $value in $points {
+        @if $index == 1 {
+          @media screen and (max-width: $value) {
+            content: quote("#{$point} max. #{$value}");
+          }
+        }
+        @else if $index < $last-index {
+          @media screen and (min-width: $previous-value + 1) and (max-width: $value) {
+            content: quote("#{$point} : max. #{$value} min. #{$previous-value + 1}");
+          }
+        }
+        @else {
+          @media screen and (min-width: $previous-value + 1) {
+            content: quote("#{$point} : min. #{$previous-value + 1}");
+          }
+        }
+        $previous-value : $value;
+        $index : $index + 1;
+      }
+    }
+    @content
+  }
+}

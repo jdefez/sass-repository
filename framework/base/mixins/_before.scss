@@ -1,0 +1,17 @@
+@mixin before($z-index: Null, $parent-position: Null) {
+  & {
+    @if $parent-position != Null {
+      position: $parent-position;
+    }
+    z-index: if($z-index != Null, $z-index, 1);
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      @content;
+    }
+
+  }
+}

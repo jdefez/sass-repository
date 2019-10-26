@@ -1,0 +1,65 @@
+@function spanPercent($span: 1, $max: 12) {
+  @return 100% / $max * $span;
+}
+
+@mixin flex-grid($grid-columns: 12) {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: {
+      right: calc(#{p(whitespace)} * -1/2);
+      left: calc(#{p(whitespace)} * -1/2);
+    }
+
+    & > .col {
+      flex: {
+        grow: 1;
+        basis: spanPercent(1, $grid-columns);
+      }
+      padding: {
+        right: calc(#{p(whitespace)} / 2);
+        left: calc(#{p(whitespace)} / 2);
+      }
+      overflow-x: hidden;
+      transition: flex-basis 500ms ease-out;
+    }
+
+    $points : map-sort-by-values($breakpoints);
+    $last-index : length(map-values($points));
+    @for $span from 2 through $grid-columns {
+      & > .col.span-#{$span} {
+        flex-basis: spanPercent($span, $grid-columns);
+      }
+
+      $index : 1;
+      @each $point, $value in $points {
+        & > .col.#{$point}-#{$span} {
+          @if $index == 1 {
+            @media screen and (max-width: $value) {
+              flex-basis: spanPercent($span, $grid-columns);
+            }
+          }
+          @else if $index < $last-index {
+            @media screen and (min-width: $previous-value + 1) and (max-width: $value) {
+              flex-basis: spanPercent($span, $grid-columns);
+            }
+          }
+          @else {
+            @media screen and (min-width: $previous-value + 1) {
+              flex-basis: spanPercent($span, $grid-columns);
+            }
+          }
+        }
+        $previous-value : $value;
+        $index : $index + 1;
+      }
+    }
+
+    @content
+  }
+
+  .fix-grid-overflow {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}

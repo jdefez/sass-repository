@@ -1,0 +1,13 @@
+@mixin display() {
+  .d {
+    &-inline-block { display: inline-block; }
+    &-inline-flex  { display: inline-flex; }
+    &-visible      { visibility: visible; }
+    &-hidden       { visibility: hidden; }
+    &-inline       { display: inline; }
+    &-block        { display: block; }
+    &-none         { display: none; }
+    &-flex         { display: flex; }
+    @content;
+  }
+}

@@ -1,0 +1,28 @@
+@mixin responsive() {
+  .r {
+    &-img,
+    &-image {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    $points : map-keys($breakpoints);
+    @each $point in $points {
+      &-only-#{$point} {
+        @each $pt in list-except($points, $point) {
+          @include breakpoint($pt) { display: none; }
+        }
+      }
+    }
+
+    $points : map-keys($breakpoints);
+    @each $point in $points {
+      &-hide-#{$point} {
+        @include breakpoint($point) { display: none; }
+      }
+    }
+
+    @content
+  }
+}
+

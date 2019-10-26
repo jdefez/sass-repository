@@ -1,0 +1,9 @@
+@function list-except($list, $value) {
+  $results : ();
+  @each $item in $list {
+    @if ($value != $item) {
+      $results : append($results, $item);
+    }
+  }
+  @return $results;
+}

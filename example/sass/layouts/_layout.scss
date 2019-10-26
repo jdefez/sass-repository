@@ -1,0 +1,106 @@
+@use 'sass-repository/framework' as f;
+
+/// Layout
+html { text-align: center; }
+
+body {
+  display: grid;
+  grid-template-columns: 200px repeat(2, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  grid-column-gap: f.p(whitespace);
+  grid-row-gap: f.p(whitespace);
+  grid-template-areas:
+    'header header header'
+    'aside content content'
+    'footer footer footer';
+
+  @include f.breakpoint(sm) {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(100px, auto);
+    grid-column-gap: 0;
+    grid-row-gap: f.p(whitespace);
+    grid-template-areas:
+      'header'
+      'content'
+      'footer';
+  }
+}
+
+body {
+  position: relative;
+
+  max-width: 992px;
+  margin: 0 auto !important;
+
+  text-align: left;
+
+  @include f.breakpoint(sm) {
+    padding-right: f.p(whitespace);
+    padding-left: f.p(whitespace);
+  }
+
+  @include f.breakpoint(lg) {
+    margin: 0 0 !important;
+    max-width: 100vw;
+  }
+
+  @include f.breakpoint(xl) {
+    margin: 0 auto;
+  }
+
+  > header { grid-area: header; }
+  > footer { grid-area: footer; }
+}
+
+main { grid-area: content; }
+aside { grid-area: aside; }
+
+body {
+  > header {
+    @include f.sticky() {
+      top: 0;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: f.p(background-base);
+  }
+
+  > footer { padding-bottom: f.p(whitespace); }
+}
+
+aside {
+  position: relative;
+  padding-left: f.p(whitespace);
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+
+  @include f.breakpoint(sm) {
+    /// todo: layout
+    display: none;
+  }
+}
+
+main {
+  padding-right: f.p(whitespace);
+
+  section {
+    padding-bottom: f.p(whitespace);
+
+    + section {
+      padding-top: f.p(whitespace);
+      border-top: 1px solid f.p(gray-light);
+    }
+  }
+
+  @include f.breakpoint(sm) {
+    padding-right: 0;
+  }
+}

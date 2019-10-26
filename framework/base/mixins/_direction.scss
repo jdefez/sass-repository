@@ -1,0 +1,20 @@
+@mixin dir($direction: ltr)
+{
+  [dir="#{$direction}"] & {
+    @content
+  }
+}
+
+@mixin ltr()
+{
+  @include dir() {
+    @content
+  }
+}
+
+@mixin rtl()
+{
+  @include dir(rtl) {
+    @content
+  }
+}

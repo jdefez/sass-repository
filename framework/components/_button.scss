@@ -1,0 +1,81 @@
+@mixin button() {
+  .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: baseline;
+
+    line-height: p(field-height);
+    height: p(field-height);
+    min-height: p(fields-height);
+    margin: {
+      top: 0 !important;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    padding: 0 p(whitespace);
+
+    overflow: hidden;
+    outline-width: 0;
+    text-align: center;
+    vertical-align: middle;
+    letter-spacing: .03em;
+    text-decoration: none;
+    font: {
+      family: inherit;
+      size: inherit;
+    }
+    border: {
+      width: p(btn-border-width);
+      style: solid;
+      radius: p(btn-border-radius);
+    }
+    background-color: transparent;
+
+    &:disabled {
+      border: {
+        width: p(btn-border-width);
+        style: solid;
+        radius: p(btn-border-radius);
+      }
+      background-color: transparent;
+    }
+
+    &-icon, &-label {
+      margin-top: 0 !important;
+      line-height: inherit;
+    }
+    &-icon { flex-grow: 0; }
+    &-label { flex-grow: 1; }
+    &-icon + &-label { margin-left: calc(#{p(whitespace)} / 2); }
+
+    &-small {
+      $ratio: 1.4;
+      height: calc(#{p(field-height)} / #{$ratio});
+      min-height: calc(#{p(field-height)} / #{$ratio});
+      line-height: calc(#{p(field-height)} / #{$ratio});
+      border-radius: calc(#{p(btn-border-radius)} / #{$ratio});
+      padding: {
+        right: calc(#{p(whitespace)} / calc(2 * #{$ratio}));
+        left: calc(#{p(whitespace)} / calc(2 * #{$ratio}));
+      }
+      font-size: calc(1rem / #{$ratio});
+      .btn-icon + .btn-label { margin-left: calc(#{p(whitespace)} / #{$ratio * 2}); }
+    }
+
+    &-xsmall {
+      $ratio: 1.8;
+      height: calc(#{p(field-height)} / #{$ratio});
+      min-height: calc(#{p(field-height)} / #{$ratio});
+      line-height: calc(#{p(field-height)} / #{$ratio});
+      border-radius: calc(#{p(btn-border-radius)} * #{1 / $ratio});
+      padding: {
+        right: calc(#{p(whitespace)} / calc(2 * #{$ratio}));
+        left: calc(#{p(whitespace)} / calc(2 * #{$ratio}));
+      }
+      font-size: calc(1rem / #{$ratio});
+      .btn-icon + .btn-label { margin-left: calc(#{p(whitespace)} / #{$ratio * 2}); }
+    }
+    @content
+  }
+}

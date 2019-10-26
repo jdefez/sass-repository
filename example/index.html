@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>example</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <header>
+    <h1 class="t-h1">
+      Sass-repository
+    </h1>
+  </header>
+  <aside>
+    <button class="r-only-sm">
+      menu
+    </button>
+    <nav class="whitespaced">
+      <a href="#grid">
+        Grid
+      </a>
+      <a href="#responsive-helpers">
+        Responsive helpers
+      </a>
+      <a href="#form-control">
+        Form controls
+      </a>
+      <a href="#form-control-group">
+        Form control group
+      </a>
+      <a href="#typography">
+        Typography
+      </a>
+    </nav>
+  </aside>
+  <footer>
+    <p class="t-center">
+      <a href="#content-top">
+        Back to top
+      </a>
+    </p>
+  </footer>
+  <main id="content-top">
+    <section class="fix-grid-overflow"
+      id="grid">
+      <header>
+        <h2 class="t-h2">
+          Grid
+        </h2>
+      </header>
+      <div class="grid">
+        <div class="col">col</div>
+        <hr class="flex-breaker">
+        <div class="col span-6">span 6</div>
+        <div class="col span-6">span 6</div>
+        <hr class="flex-breaker">
+        <div class="col span-4">span 4</div>
+        <div class="col span-4">span 4</div>
+        <div class="col span-4">span 4</div>
+        <hr class="flex-breaker">
+        <div class="col span-3">span 3</div>
+        <div class="col span-3">span 3</div>
+        <div class="col span-3">span 3</div>
+        <div class="col span-3">span 3</div>
+        <hr class="flex-breaker">
+        <div class="col sm-12">col</div>
+        <div class="col sm-12">col</div>
+        <div class="col sm-12">col</div>
+        <div class="col sm-12">col</div>
+        <div class="col sm-12">col</div>
+        <div class="col sm-12">col</div>
+        <hr class="flex-breaker">
+        <div class="col sm-12">col</div>
+        <div class="col span-11 sm-12">span 11</div>
+        <hr class="flex-breaker">
+        <div class="col span-2 sm-12">span 2</div>
+        <div class="col span-10 sm-12">span 10</div>
+        <hr class="flex-breaker">
+        <div class="col span-3 sm-12">span 3</div>
+        <div class="col span-9 sm-12">span 9</div>
+        <hr class="flex-breaker">
+        <div class="col span-4 sm-12">span 4</div>
+        <div class="col span-8 sm-12">span 8</div>
+        <hr class="flex-breaker">
+        <div class="col span-5 sm-12">span 5</div>
+        <div class="col span-7 sm-12">span 7</div>
+      </div>
+    </section>
+    <section class="whitespaced"
+      id="responsive-helpers">
+      <header>
+        <h2 class="t-h2">
+          Responsive helpers
+        </h2>
+      </header>
+      <p class="r-only-sm">Visible on sm only</p>
+      <p class="r-only-md">Visible on md only</p>
+      <p class="r-only-lg">Visible on lg only</p>
+      <p class="r-only-xl">Visible on xl only</p>
+      
+      <p class="r-hide-sm">Hiden on: sm</p>
+      <p class="r-hide-md">Hiden on: md</p>
+      <p class="r-hide-lg">Hiden on: lg</p>
+      <p class="r-hide-xl">Hiden on: xl</p>
+    </section>
+
+    <section class="whitespaced"
+      id="form-control">
+      <header>
+        <h2 class="t-h2">
+          Form controls
+        </h2>
+      </header>
+      <p>
+        <select class="form-control">
+          <option value="option-1">
+            option-1
+          </option>
+          <option value="option-2">
+            option-2
+          </option>
+          <option value="option-3">
+            option-3
+          </option>
+        </select>
+      </p>
+      <p>
+        <input type="text" class="form-control">
+      </p>
+      <p>
+        <textarea class="form-control"></textarea>
+      </p>
+      <p>
+        <button class="btn --secondary">
+          Button
+        </button>
+      </p>
+    </section>
+    <section class="whitespaced"
+      id="form-control-group">
+      <header>
+        <h2 class="t-h2">
+          Form control group
+        </h2>
+      </header>
+      <p class="form-control-group">
+        <label for="search">
+          Label
+        </label>
+        <input type="text"
+          id="search"
+          class="form-control">
+        <button class="btn --primary">
+          Button
+        </button>
+      </p>
+    </section>
+    <section class="whitespaced"
+      id="typography">
+      <header>
+        <h2 class="t-h2">
+          Typography
+        </h2>
+      </header>
+      <h1 class="t-h1">
+        Heading 1
+      </h1>
+      <h2 class="t-h2">
+        Heading 2
+      </h2>
+      <h3 class="t-h3">
+        Heading 3
+      </h3>
+      <h4 class="t-h4">
+        Heading 4
+      </h4>
+      <h5 class="t-h5">
+        Heading 5
+      </h5>
+      <p class="t-leading">
+      Text leading: Affronting everything discretion men now own
+      did. Still round match we to. Frankness pronounce daughters
+      remainder extensive has but.
+      </p>
+      <p class="t-copy">
+      Text copy:
+      Affronting everything discretion men now own did.
+      Still round match we to. Frankness pronounce daughters
+      remainder extensive has but.
+      </p>
+      <p class="t-small">
+      Text small: Affronting everything discretion men now own did.
+      Still round match we to. Frankness pronounce daughters
+      remainder extensive has but.
+      </p>
+      <p class="t-xsmall">
+      Text xsmall: Affronting everything discretion men now own
+      did. Still round match we to. Frankness pronounce daughters
+      remainder extensive has but.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

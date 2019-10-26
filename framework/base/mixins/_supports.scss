@@ -1,0 +1,29 @@
+// Todo: Deal with:
+//  - Multiple conditions an conditions group(s)
+//  - And operators (and, or, not)
+
+
+// @include supports (condition-map) where condition-map is of the form:
+//   (
+//     prop : value,
+//     and : (
+//       prop : value,
+//       or : ( ... )
+//     )
+//     or : ( ... )
+//     not : ( ... )
+//   )
+
+@mixin supports($prop, $value)
+{
+  @supports ($prop: $value) {
+    @content
+  }
+}
+
+@mixin supports-not($prop, $value)
+{
+  @supports not($prop: $value) {
+    @content
+  }
+}

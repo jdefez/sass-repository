@@ -1,0 +1,24 @@
+@mixin _position($pos) {
+  & {
+    position: $pos;
+    @content;
+  }
+}
+
+@mixin absolute() {
+  @include _position(absolute) {
+    @content;
+  };
+}
+
+@mixin fixed() {
+  @include _position(fixed) {
+    @content;
+  };
+}
+
+@mixin sticky() {
+  @include _position(sticky) {
+    @content;
+  };
+}

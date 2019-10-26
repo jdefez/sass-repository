@@ -1,0 +1,27 @@
+// ? :root can be wrapped in @media
+@mixin responsive-font-size(
+  $min-size: 14, $min-width: 400,
+  $max-size: 16, $max-width: 800
+) {
+  :root {
+    $base-font-size: $min-size;
+    font-size: #{$min-size}px;
+  }
+
+  @media (min-width: #{$min-width}px) and (max-width: #{$max-width}px) {
+    :root {
+      font-size: responsive-font-size(
+        $min-size, $min-width,
+        $max-size, $max-width
+      );
+    }
+  }
+
+  @media (min-width: #{$max-width}px) {
+    :root {
+      $base-font-size: $max-size;
+      font-size: #{$max-size}px;
+    }
+  }
+}
+

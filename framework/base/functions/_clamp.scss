@@ -1,0 +1,5 @@
+// Warning: neither min() nor max() methods are supported yet
+@function clamp ($min, $val, $max)
+{
+  @return max($min, min($val, $max))
+}

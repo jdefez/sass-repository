@@ -1,0 +1,27 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "description": "scss transform to prefixed and minifyed css",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass:watch": "sass sass/:styles/ --watch --load-path=node_modules",
+    "sass:dev-watch": "sass sass/:styles/ --watch",
+    "sass:compile": "sass sass/:styles/ --style=compressed --no-source-map --load-path=node_modules",
+    "css:prefix": "postcss --use autoprefixer -b 'last 5 versions' styles/styles.css -r",
+    "css:build": "npm-run-all sass:compile css:prefix"
+  },
+  "author": "Me",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.2",
+    "sass": "^1.23.0",
+    "sass-repository": "git+ssh://git@gitlab.com/PrevisiteOfficial/packages/sass-repository.git"
+  },
+  "dependencies": {}
+}

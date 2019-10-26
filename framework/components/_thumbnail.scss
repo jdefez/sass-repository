@@ -1,0 +1,21 @@
+@mixin placeholder() {
+  .placeholder {
+    display: block;
+    width: 100%;
+
+    &::after {
+      display: block;
+      content: '';
+    }
+
+    &-16-9 {
+      &::after { padding-top: #{9 / 16 * 100%}; }
+    }
+
+    &-4-3 {
+      &::after { padding-top: #{3 / 4 * 100%}; }
+    }
+
+    @content
+  }
+}

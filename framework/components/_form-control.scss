@@ -1,0 +1,122 @@
+@mixin field() {
+  width: 100%;
+  margin-top: 0;
+
+  font: {
+    size: inherit;
+    family: inherit;
+  }
+  border: {
+    width: p(field-border-width);
+    style: solid;
+    radius: p(field-border-radius);
+  }
+  outline: none;
+  appearance: none;
+
+  @content
+}
+
+@mixin form-control {
+  .form-control {
+    display: block;
+    width: 100%;
+    padding: {
+      top: 0;
+      right: calc(#{p(whitespace)} / 2);
+      bottom: 0;
+      left: calc(#{p(whitespace)} / 2);
+    }
+    @include field {
+      height: p(field-height);
+      min-height: p(field-height);
+      line-height: p(field-height);
+    }
+
+    &.--inline { width: auto; }
+
+    @content
+  }
+
+  textarea.form-control {
+    @include field {
+      height: calc(#{p(field-height)} * 4);
+      min-height: calc(#{p(field-height)} * 4);
+      line-height: 1.5;
+      padding: {
+        top: calc(#{p(whitespace)} / 2);
+        bottom: calc(#{p(whitespace)} / 2);
+      }
+    }
+  }
+}
+
+@mixin form-control-group {
+  .form-control-group {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    // overflow: hidden;
+
+    label, .btn, .form-control {
+      margin-top: 0;
+      border-radius: 0;
+    }
+
+    label, .btn {
+      flex-grow: 0;
+      height: p(field-height);
+      min-height: p(field-height);
+      margin-top: 0;
+      padding: {
+        left: calc(#{p(whitespace)} / 2);
+        right: calc(#{p(whitespace)} / 2);
+      }
+      line-height: p(field-height);
+    }
+
+    /// form-control-group border-width
+    @if (map-get($vars, field-border-width) > 0) {
+      label {
+        border: {
+          style: solid;
+          width: p(field-border-width);
+        }
+      }
+      & > .form-control,
+      & > label,
+      & > .btn {
+        border-right-width: 0;
+
+        &:last-child { border-right-width: p(field-border-width); }
+      }
+    }
+
+    /// form-control-group border-radius
+    @if map-get($vars, field-border-radius) {
+      & > .form-control,
+      & > label,
+      & > .btn {
+        border : {
+          top-radius: 0;
+          right-radius: 0;
+          bottom-radius: 0;
+          left-radius: 0;
+        }
+
+        &:first-child {
+          border-top-left-radius: p(field-border-radius);
+          border-bottom-left-radius: p(field-border-radius);
+        }
+        &:last-child {
+          border-top-right-radius: p(field-border-radius);
+          border-bottom-right-radius: p(field-border-radius);
+        }
+      }
+    }
+
+    &.--inline { display: inline-flex; }
+
+    @content;
+  }
+}

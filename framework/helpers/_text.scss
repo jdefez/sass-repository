@@ -1,0 +1,32 @@
+@mixin text() {
+  .t {
+    @each $direction in (left right center justify) {
+      @if $direction != justify {
+        &-#{$direction} { text-align: $direction; }
+      } @else {
+        &-#{$direction} {
+          text-align: $direction;
+          text-justify: distribute;
+          hyphens: auto;
+        }
+      }
+    }
+
+    &-italic,
+    &-oblique { font-size: italic; }
+
+    &-ellipsis { text-overflow: ellipsis; }
+
+    &-nowrap { white-space: nowrap; }
+
+    &-ellipsis {
+      display: block;
+      margin-top: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @content;
+  }
+}

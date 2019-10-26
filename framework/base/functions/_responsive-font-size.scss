@@ -1,0 +1,9 @@
+@function responsive-font-size(
+  $min-size: 12, $min-width: 400,
+  $max-size: 24, $max-width: 800
+) {
+  @return calc(
+    #{$min-size}px + (#{$max-size} - #{$min-size}) * (
+      (100vw - #{$min-width}px) / (#{$max-width} - #{$min-width})
+  ));
+}

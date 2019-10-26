@@ -1,0 +1,47 @@
+@mixin grid-grid($grid-columns: 12)
+{
+  .grid {
+    display: grid;
+    grid-template-columns: repeat($grid-columns, 1fr);
+    grid-template-rows: minmax(5Opx, auto);
+    grid-column-gap: p(whitespace);
+    grid-row-gap: p(whitespace);
+
+    & > .col { grid-column-end: span 1; }
+
+    $points : map-sort-by-values($breakpoints);
+    $last-index : length(map-values($points));
+    @for $span from 2 through $grid-columns {
+      & > .col.span-#{$span} {
+        grid-column-end: span $span;
+      }
+
+      $index : 1;
+      @each $point, $value in $points {
+        & > .col.#{$point}-#{$span} {
+          @if $index == 1 {
+            @media screen and (max-width: $value) {
+              grid-column-end: span $span;
+            }
+          }
+          @else if $index < $last-index {
+            @media screen and (min-width: $previous-value + 1) and (max-width: $value) {
+              grid-column-end: span $span;
+            }
+          }
+          @else {
+            @media screen and (min-width: $previous-value + 1) {
+              grid-column-end: span $span;
+            }
+          }
+        }
+        $previous-value : $value;
+        $index : $index + 1;
+      }
+    }
+
+    &-breaker { grid-column-end: span 12; }
+
+    @content;
+  }
+}

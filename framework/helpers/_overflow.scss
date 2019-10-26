@@ -1,0 +1,6 @@
+@mixin overflow() {
+  .o {
+    &-hidden { overflow: hidden; }
+    @content;
+  }
+}
