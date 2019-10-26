@@ -1,6 +1,6 @@
 {
   "name": "sass-repository",
-  "version": "1.0.5",
+  "version": "1.0.0",
   "description": "sass framework",
   "main": "_index.scss",
   "directories": {
