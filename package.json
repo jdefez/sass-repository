@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:PrevisiteOfficial/packages/sass-repository.git"
+    "url": "git@github.com:jdefez/sass-repository.git"
   },
   "keywords": [
     "sass",
