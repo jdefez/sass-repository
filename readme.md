@@ -37,3 +37,7 @@ Sass-repository is a sass module you can use in your project as a node module. I
 **More about sass modules**
   - [sass-lang.com](https://sass-lang.com/documentation/at-rules/use)
   - [css-tricks.com](https://css-tricks.com/introducing-sass-modules/)
+
+**Todo:**
+  - make it usable with [degit](https://github.com/Rich-Harris/degit)
+  
