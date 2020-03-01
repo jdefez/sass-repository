@@ -83,9 +83,9 @@
 /// @import 'vendors/all';
 /// ...
 
-body > header {
-  @include f.media-query-highlighter($z-index: 5);
-}
+//body > header {
+  // @include f.media-query-highlighter($z-index: 5);
+//}
 
 /// Todo: move to framework
 .whitespaced {

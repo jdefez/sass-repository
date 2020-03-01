@@ -18,6 +18,7 @@
     &-ellipsis { text-overflow: ellipsis; }
 
     &-nowrap { white-space: nowrap; }
+    &-break-word { overflow-wrap: break-word; }
 
     &-ellipsis {
       display: block;
