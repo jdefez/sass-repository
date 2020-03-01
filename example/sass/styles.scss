@@ -1,5 +1,4 @@
-//@use 'sass-repository/framework' as f with (
-@use '../../framework' as f with (
+@use 'sass-repository/framework' as f with (
   $breakpoints: (
     sm :  576px,
     md :  768px,
